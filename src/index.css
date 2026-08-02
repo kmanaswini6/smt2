@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #f8f6f2;
+    color: #2a2623;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #e9ddcf;
+    color: #2a2623;
+  }
+}
+
+@layer utilities {
+  /* Warm paper texture with a near-invisible tiny grid */
+  .paper-texture {
+    background-color: #f8f6f2;
+    background-image:
+      linear-gradient(rgba(138, 106, 68, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(138, 106, 68, 0.025) 1px, transparent 1px),
+      radial-gradient(rgba(138, 106, 68, 0.018) 1px, transparent 1px);
+    background-size:
+      28px 28px,
+      28px 28px,
+      7px 7px;
+    background-position:
+      -1px -1px,
+      -1px -1px,
+      0 0;
+  }
+
+  .paper-grain {
+    position: relative;
+  }
+  .paper-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(42, 38, 35, 0.018) 1px, transparent 1px);
+    background-size: 4px 4px;
+    mix-blend-mode: multiply;
+    border-radius: inherit;
+  }
+
+  .ledger-rule {
+    background-image: linear-gradient(to bottom, #ddd6ce 1px, transparent 1px);
+    background-size: 100% 36px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  }
+
+  .stamp-border {
+    border: 1.5px solid currentColor;
+    border-radius: 4px;
+  }
+}
+
+/* Thin, editorial scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #efeae2;
+}
+::-webkit-scrollbar-thumb {
+  background: #ddd6ce;
+  border-radius: 6px;
+  border: 2px solid #efeae2;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9c0b4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
